@@ -1,0 +1,188 @@
+﻿@model MvcApplication1.Models.BancoBE
+
+
+<style type="text/css">
+    .modal-dialog {
+        background-color: rgba(255, 255, 255, 0);
+        height: 540px;
+    }
+
+    .modal-content {
+        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        height: 500px;
+    }
+
+    .modal-dialog {
+        right: auto;
+        left: 0%;
+        width: 50%;
+        padding-top: 30px;
+        padding-bottom: 5px;
+    }
+</style>
+<script type="text/javascript">
+    function Guardar() {
+        var GetDireccion = $('#Direccion').val();
+        var GetNombre = $('#Nombre').val();
+        var GetID = $('#ID').val();
+        var Sucursal = $('#dllSucursal').val();
+        var monto = $("#oSucursalesBE_oOrdenesDePagoBE_monto").val();
+        var moneda = $('#ddlMoneda').val();
+        var estado = $('#ddlEstado').val();
+
+        if ($('#dllSucursal').val() == "")
+        {
+            alert("Ingrese Sucursal")
+            return false;
+        }
+
+        if ($('#ddlEstado').val() == "") {
+            alert("Ingrese estado")
+            return false;
+        }
+
+        if ($('#ddlMoneda').val() == "") {
+            alert("Ingrese moneda")
+            return false;
+        }
+
+
+        if (monto == "") {
+            alert("Ingrese Monto")
+            return false;
+        }
+        $.ajax({
+            url: "/MantenimientoBanco/Guardar",
+            type: 'post',
+            data: {
+                ID: GetID,
+                Banco: GetNombre,
+                direccion: GetDireccion,
+                IDSucursal: Sucursal,
+                monto: monto,
+                moneda: moneda,
+                estado: estado
+            },
+            async: true,
+            cache: false,
+            success: function (data) {
+                if (data.message == "OK") {
+                    alert("Se guardo Correctamente")
+                    $('#cerrar').click();
+                    $('.modal-backdrop').remove();
+                    mostrar();
+                }
+            },
+            error: function () {
+                alert("Se produjo un error al obtener los datos.");
+            }
+        });
+
+    }
+
+    function mostrar() {
+        $.ajax({
+            url: "/MantenimientoBanco/ListarBancoGrid",
+            type: 'Get',
+            data: {
+                ID: '1'
+            },
+            async: true,
+            cache: false,
+            success: function (data) {
+                $("#divGrid").html(data);
+            },
+            error: function () {
+                alertModal("Se produjo un error al obtener los datos.");
+            }
+        });
+    };
+
+
+</script>
+
+
+
+<div class="modalCrono"></div>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" id="cerrar" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="H">Registro de Banco</h4>
+
+        </div>
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="margin-top: 5px;">Ingreso de Datos</div>
+               @Html.HiddenFor(model => model.ID)
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group" style="padding:10px 0px 10px 0px">
+                            <label class="col-lg-2 control-label" for="disabledSelect">Sucursal</label>
+                            <div class="col-lg-4">
+                                @Html.DropDownList("dllSucursal", null, "--Todos--", htmlAttributes: new { @id = "dllSucursal", @class = "form-control ddlfilter" })
+                                @*@Html.TextBoxFor(model => model.oSucursalesBE.Nombre, new { @class = "form-control" })*@
+                            </div>
+                            <label class="col-lg-2 control-label" for="disabledSelect">NOMBRE</label>
+                            <div class="col-lg-4">
+                                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group" style="padding:10px 0px 10px 0px">
+                            <label class="col-lg-2 control-label" for="disabledSelect">DIRECCION</label>
+                            <div class="col-lg-4">
+                                @*@Html.PasswordFor(model => model.NOMBRES, new { @class = "form-control", @value = @Model.NOMBRES })*@
+                                @Html.TextBoxFor(model => model.Direccion, new { @class = "form-control", @value = @Model.Direccion })
+                            </div>
+                            <label class="col-lg-2 control-label" for="disabledSelect">FECHA REGISTRO</label>
+                            <div class="col-lg-4">
+                                @Html.TextBoxFor(model => model.fechaRegistro, new { @class = "form-control", @value = @Model.fechaRegistro })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group" style="padding:10px 0px 10px 0px">
+                            <label class="col-lg-2 control-label" for="disabledSelect">Monto</label>
+                            <div class="col-lg-4">
+                                @if (Model.oSucursalesBE != null)
+                                {
+                                    @Html.TextBoxFor(model => model.oSucursalesBE.oOrdenesDePagoBE.monto, new { @class = "form-control", @value = @Model.oSucursalesBE.oOrdenesDePagoBE.monto })
+                                }
+                                else
+                                {
+                                    @Html.TextBoxFor(model => model.oSucursalesBE.oOrdenesDePagoBE.monto, new { @class = "form-control", @value = "0"})
+                                }
+                            </div>
+                            <label class="col-lg-2 control-label" for="disabledSelect">Moneda</label>
+                            <div class="col-lg-4">
+                                @Html.DropDownList("ddlMoneda", null, "--Todos--", htmlAttributes: new { @id = "ddlMoneda", @class = "form-control ddlfilter" })
+                            </div>
+                            <label class="col-lg-2 control-label" for="disabledSelect">Estado</label>
+                            <div class="col-lg-4">
+                                @Html.DropDownList("ddlEstado", null, "--Todos--", htmlAttributes: new { @id = "ddlEstado", @class = "form-control ddlfilter" })
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="row">
+                        <div class="form-group" style="padding:20px 0px 10px 0px">
+                            <div class="col-lg-2 control-label" style="padding-bottom: 15px;">
+                                <a id="lnkGrabar" href="#" onclick=" return Guardar()" class="btn btn-warning"><i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Grabar</a>
+                            </div>
+                            <div class="col-lg-2 control-label" style="padding-bottom: 15px;">
+                                <a id="lnkCancelar" href="#" class="btn btn-warning"><i class="glyphicon glyphicon-remove"></i>&nbsp;Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="msg"></div>
+            </div>
+        </div>
+
+    </div>
+</div>

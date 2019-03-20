@@ -1,0 +1,14 @@
+C:\Users\jhoel\Source\Repos\Parte_1\Pregunta_2\bin\Debug\Pregunta_2.exe.config
+C:\Users\jhoel\Source\Repos\Parte_1\Pregunta_2\bin\Debug\Pregunta_2.exe
+C:\Users\jhoel\Source\Repos\Parte_1\Pregunta_2\bin\Debug\Pregunta_2.pdb
+C:\Users\jhoel\Source\Repos\Parte_1\Pregunta_2\obj\Debug\Pregunta_2.csprojAssemblyReference.cache
+C:\Users\jhoel\Source\Repos\Parte_1\Pregunta_2\obj\Debug\Pregunta_2.csproj.CoreCompileInputs.cache
+C:\Users\jhoel\Source\Repos\Parte_1\Pregunta_2\obj\Debug\Pregunta_2.exe
+C:\Users\jhoel\Source\Repos\Parte_1\Pregunta_2\obj\Debug\Pregunta_2.pdb
+G:\Parte_1\Pregunta_2\bin\Debug\Pregunta_2.exe.config
+G:\Parte_1\Pregunta_2\bin\Debug\Pregunta_2.exe
+G:\Parte_1\Pregunta_2\bin\Debug\Pregunta_2.pdb
+G:\Parte_1\Pregunta_2\obj\Debug\Pregunta_2.csproj.CoreCompileInputs.cache
+G:\Parte_1\Pregunta_2\obj\Debug\Pregunta_2.exe
+G:\Parte_1\Pregunta_2\obj\Debug\Pregunta_2.pdb
+G:\Parte_1\Pregunta_2\obj\Debug\Pregunta_2.csprojAssemblyReference.cache

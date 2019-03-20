@@ -1,0 +1,178 @@
+﻿@model IEnumerable<MvcApplication1.Models.BancoBE>
+<script src="~/Scripts/bootstrap.js"></script>
+<script type="text/javascript">
+    function mostrar(ID_usuario) {
+        $('#verInformacionEmpresa').modal('show');
+        $.ajax({
+            url: "/MantenimientoBanco/Edit",
+            type: 'Get',
+            data: {
+                ID: ID_usuario
+            },
+            async: true,
+            cache: false,
+            success: function (data) {
+                $("#RegistroObservacionesInformacion").html(data);
+            },
+            error: function () {
+                alert("Se produjo un error al obtener los datos.");
+            }
+        });
+
+    }
+
+    function Eliminar(ID_eliminar) {
+       
+        $.ajax({
+            url: "/MantenimientoBanco/Eliminar",
+            type: 'post',
+            data: {
+                ID: ID_eliminar
+            },
+            async: true,
+            cache: false,
+            success: function (data) {
+                if (data.message == "OK") {
+                    alert("Se Elimino Correctamente")
+                    $('#cerrar').click();
+                    mostrar_grilla();
+                }
+            },
+            error: function () {
+                alert("Se produjo un error al obtener los datos.");
+            }
+        });
+
+    }
+
+    function mostrar_grilla() {
+        $.ajax({
+            url: "/MantenimientoBanco/ListarBancoGrid",
+            type: 'Get',
+            data: {
+                ID: '1'
+            },
+            async: true,
+            cache: false,
+            success: function (data) {
+                $("#divGrid").html(data);
+            },
+            error: function () {
+                alertModal("Se produjo un error al obtener los datos.");
+            }
+        });
+    };
+
+
+</script>
+
+<div class="modalCrono"></div>
+<div class="row form-group margin-bottom_0 ">
+    <div class="form-group col-lg-2">
+        <a id="lnkAnular" href="#" class="btn btn-warning" onclick="mostrar(0);"><i class="glyphicon glyphicon-edit"></i>&nbsp;Nuevo&nbsp;</a>
+    </div>
+</div>
+
+<div id="content">
+
+    <div class="details">
+        <div class="jtable-main-container">
+            <div class="jtable-title">
+                <div class="jtable-title-text">@ViewBag.TabTitle</div>
+            </div>
+        </div>
+        <div class="TableContainer">
+            <table class="display compact table table-hover cell-border small" style="width:100%" id="detTable">
+                <thead>
+                    <tr class="thead-infot">
+                        <th width="1%">
+                            Editar
+                        </th>
+                         <th width="1%">
+                            Eliminar
+                        </th>
+                        <th width="20%">
+                            @Html.DisplayNameFor(model => model.Nombre)
+                        </th>
+                        <th width="10%">
+                            @Html.DisplayNameFor(model => model.Direccion)
+                        </th>
+                        <th width="10%">
+                            @Html.DisplayNameFor(model => model.fechaRegistro)
+                        </th>
+                        <th width="10%">
+                           @* @Html.DisplayNameFor(model => model.oSucursalesBE.Nombre)*@
+                            Sucursal
+                        </th>
+                        <th width="10%">
+                            @Html.DisplayNameFor(model => model.oSucursalesBE.oOrdenesDePagoBE.monto)
+                        </th>
+                        <th width="10%">
+                            @Html.DisplayNameFor(model => model.oSucursalesBE.oOrdenesDePagoBE.Moneda)
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="recorre">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="tdicon">
+                                <button type="button" class="btn btn-default btn-xs" name="btn" onclick="mostrar(@item.ID);">
+                                    <i class="icon-edit"></i>
+                                </button>
+                            </td>
+                            <td class="tdicon">
+                                <button type="button" class="btn btn-default btn-xs" name="btn" onclick="Eliminar(@item.ID);">
+                                    <i class="icon-remove"></i>
+                                </button>
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Direccion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.fechaRegistro)
+                            </td>
+                         
+                            <td>
+                                @Html.DisplayFor(modelItem => item.oSucursalesBE.Nombre)
+                            </td>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.oSucursalesBE.oOrdenesDePagoBE.monto)
+                            </td>
+
+                            <td>
+                                @{
+                                    List<SelectListItem> ListaMonedas = ViewBag.ddlMoneda;
+                                    string desModena = ListaMonedas.Where(e => e.Value == item.oSucursalesBE.oOrdenesDePagoBE.Moneda).FirstOrDefault().Text;
+                                }
+                                @desModena
+                            </td>
+
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        </div>
+
+
+    </div>
+
+    <div class="modal-body">
+
+        <div class="col-lg-2">
+            <div class="modal fade align_center" id="verInformacionEmpresa" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div id="RegistroObservacionesInformacion">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Persona/listaPersona.js"></script>
+
+

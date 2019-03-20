@@ -1,0 +1,7 @@
+G:\Parte_1\Parte_1\bin\Debug\Parte_1.exe.config
+G:\Parte_1\Parte_1\bin\Debug\Parte_1.exe
+G:\Parte_1\Parte_1\bin\Debug\Parte_1.pdb
+G:\Parte_1\Parte_1\obj\Debug\Pregunta_1.csproj.CoreCompileInputs.cache
+G:\Parte_1\Parte_1\obj\Debug\Parte_1.exe
+G:\Parte_1\Parte_1\obj\Debug\Parte_1.pdb
+G:\Parte_1\Parte_1\obj\Debug\Pregunta_1.csprojAssemblyReference.cache

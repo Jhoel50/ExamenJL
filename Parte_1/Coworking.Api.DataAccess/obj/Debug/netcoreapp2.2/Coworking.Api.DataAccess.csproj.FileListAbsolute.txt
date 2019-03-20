@@ -1,0 +1,14 @@
+G:\Parte_1\Coworking.Api.DataAccess\obj\Debug\netcoreapp2.2\Coworking.Api.DataAccess.csprojAssemblyReference.cache
+G:\Parte_1\Coworking.Api.DataAccess\obj\Debug\netcoreapp2.2\Coworking.Api.DataAccess.csproj.CoreCompileInputs.cache
+G:\Parte_1\Coworking.Api.DataAccess\obj\Debug\netcoreapp2.2\Coworking.Api.DataAccess.AssemblyInfoInputs.cache
+G:\Parte_1\Coworking.Api.DataAccess\obj\Debug\netcoreapp2.2\Coworking.Api.DataAccess.AssemblyInfo.cs
+G:\Parte_1\Coworking.Api.DataAccess\bin\Debug\netcoreapp2.2\Coworking.Api.DataAccess.deps.json
+G:\Parte_1\Coworking.Api.DataAccess\bin\Debug\netcoreapp2.2\Coworking.Api.DataAccess.dll
+G:\Parte_1\Coworking.Api.DataAccess\bin\Debug\netcoreapp2.2\Coworking.Api.DataAccess.pdb
+G:\Parte_1\Coworking.Api.DataAccess\bin\Debug\netcoreapp2.2\Coworking.Api.DataAccess.Contracts.dll
+G:\Parte_1\Coworking.Api.DataAccess\bin\Debug\netcoreapp2.2\Coworking.Api.DataAccess.Contracts.pdb
+G:\Parte_1\Coworking.Api.DataAccess\obj\Debug\netcoreapp2.2\Coworking.Api.DataAccess.csproj.CopyComplete
+G:\Parte_1\Coworking.Api.DataAccess\obj\Debug\netcoreapp2.2\Coworking.Api.DataAccess.dll
+G:\Parte_1\Coworking.Api.DataAccess\obj\Debug\netcoreapp2.2\Coworking.Api.DataAccess.pdb
+G:\Parte_1\Coworking.Api.DataAccess\bin\Debug\netcoreapp2.2\Coworking.Api.Business.dll
+G:\Parte_1\Coworking.Api.DataAccess\bin\Debug\netcoreapp2.2\Coworking.Api.Business.pdb

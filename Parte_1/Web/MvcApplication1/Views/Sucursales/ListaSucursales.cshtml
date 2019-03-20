@@ -1,0 +1,83 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/Content/DataTables/css/jquery.dataTables.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script type="text/javascript">
+
+    function mostrar(ID) {
+        console.log(ID);
+        $.ajax({
+            url: "/Sucursales/ListarSucursalGrid",
+            type: 'Get',
+            data: {
+                ID: '1'
+            },
+            async: true,
+            cache: false,
+            success: function (data) {
+                $("#divGrid").html(data);
+            },
+            error: function () {
+                alertModal("Se produjo un error al obtener los datos.");
+            }
+        });
+    };
+
+
+</script>
+<div id="content">
+    <div class="inner">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Mantenimiento de Sucursales</div>
+                    <div class="panel-body">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label class="col-lg-2 col-md-2 col-sm-2 control-label" for="disabledSelect2">Nombre de Sucursal</label>
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    <input type="text" name="txt_NombreUsuario" id="txt_NombreUsuario" class="form-control" placeholder="Buscar por Nombre" />
+                                </div>
+                                <label class="col-lg-2 col-md-2 col-sm-2 control-label" for="disabledSelect2">Filtrar</label>
+                                <div class="col-lg-3 col-md-3 col-sm-3">
+                                    @*@Html.DropDownList("ddlEstado", null, "--Todos--", htmlAttributes: new { @id = "ddlEstado", @class = "form-control ddlfilter" })
+                                </div>*@
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <a id="lnkBusqueda" href="#" class="btn btn-warning" onclick="mostrar(0)"><i class="icon-search icon-white"></i>&nbsp;Buscar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-lg-12">
+                            <div id="msg"></div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <div class="details">
+                                    <div class="TableContainer">
+                                        <div class="block" id="divGrid"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<input id="Hdcoledt" type="hidden" value="@ViewBag.ColEdt" />
+<input id="Hdcoleli" type="hidden" value="@ViewBag.ColEli" />
+<input id="_hdID" type="hidden" />
+<div id="createForm"></div>
+<div id="editForm"></div>
+<div id="deleteForm"></div>
+<script type="text/javascript" src="~/Scripts/DataTables/jquery.dataTables.js"></script>

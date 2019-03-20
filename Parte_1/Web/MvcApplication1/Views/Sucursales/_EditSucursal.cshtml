@@ -1,0 +1,130 @@
+﻿@model MvcApplication1.Models.SucursalesBE
+
+
+<style type="text/css">
+    .modal-dialog {
+        background-color: rgba(255, 255, 255, 0);
+        height: 540px;
+    }
+
+    .modal-content {
+        -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        height: 500px;
+    }
+
+    .modal-dialog {
+        right: auto;
+        left: 0%;
+        width: 50%;
+        padding-top: 30px;
+        padding-bottom: 5px;
+    }
+</style>
+<script type="text/javascript">
+    function Guardar() {
+        var GetDireccion = $('#Direccion').val();
+        var GetNombre = $('#Nombre').val();
+        var GetID = $('#ID').val();
+        $.ajax({
+            url: "/Sucursales/Guardar",
+            type: 'post',
+            data: {
+                ID: GetID,
+                Sucursal: GetNombre,
+                direccion: GetDireccion
+            },
+            async: true,
+            cache: false,
+            success: function (data) {
+                if (data.message == "OK") {
+                    alert("Se guardo Correctamente")
+                    $('#cerrar').click();
+                    $('.modal-backdrop').remove();
+                    mostrar();
+                }
+            },
+            error: function () {
+                alert("Se produjo un error al obtener los datos.");
+            }
+        });
+
+    }
+
+    function mostrar() {
+        $.ajax({
+            url: "/Sucursales/ListarSucursalGrid",
+            type: 'Get',
+            data: {
+                ID: '1'
+            },
+            async: true,
+            cache: false,
+            success: function (data) {
+                $("#divGrid").html(data);
+            },
+            error: function () {
+                alertModal("Se produjo un error al obtener los datos.");
+            }
+        });
+    };
+
+
+</script>
+
+
+
+<div class="modalCrono"></div>
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" id="cerrar" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" id="H">Registro de Sucursal</h4>
+
+        </div>
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading" style="margin-top: 5px;">Ingreso de Datos</div>
+               @Html.HiddenFor(model => model.ID)
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group" style="padding:10px 0px 10px 0px">
+                            <label class="col-lg-2 control-label" for="disabledSelect">Sucursal</label>
+                            <div class="col-lg-8">
+                              @*  @Html.DropDownList("ddlRoles", null, "--Todos--", htmlAttributes: new { @id = "ddlRoles", @class = "form-control ddlfilter" })*@
+                                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                            </div>
+                           
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group" style="padding:10px 0px 10px 0px">
+                            <label class="col-lg-2 control-label" for="disabledSelect">DIRECCION</label>
+                            <div class="col-lg-4">
+                                @*@Html.PasswordFor(model => model.NOMBRES, new { @class = "form-control", @value = @Model.NOMBRES })*@
+                                @Html.TextBoxFor(model => model.Direccion, new { @class = "form-control", @value = @Model.Direccion })
+                            </div>
+                            <label class="col-lg-2 control-label" for="disabledSelect">FECHA REGISTRO</label>
+                            <div class="col-lg-4">
+                                @Html.TextBoxFor(model => model.FechaRegistro, new { @class = "form-control", @value = @Model.FechaRegistro })
+                            </div>
+                        </div>
+                    </div
+                   
+                    <div class="row">
+                        <div class="form-group" style="padding:20px 0px 10px 0px">
+                            <div class="col-lg-2 control-label" style="padding-bottom: 15px;">
+                                <a id="lnkGrabar" href="#" onclick="Guardar()" class="btn btn-warning"><i class="glyphicon glyphicon-floppy-disk"></i>&nbsp;Grabar</a>
+                            </div>
+                            <div class="col-lg-2 control-label" style="padding-bottom: 15px;">
+                                <a id="lnkCancelar" href="#" class="btn btn-warning"><i class="glyphicon glyphicon-remove"></i>&nbsp;Cancelar</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="msg"></div>
+            </div>
+        </div>
+
+    </div>
+</div>

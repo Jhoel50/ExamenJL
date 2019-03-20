@@ -1,0 +1,107 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v2.2",
+    "signature": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v2.2": {
+      "Coworking.Api.CrossCutting/1.0.0": {
+        "dependencies": {
+          "Coworking.Api.Aplication": "1.0.0",
+          "Coworking.Api.Aplication.Contracts": "1.0.0",
+          "Coworking.Api.DataAccess": "1.0.0",
+          "Coworking.Api.DataAccess.Contracts": "1.0.0",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "2.2.0.0"
+        },
+        "runtime": {
+          "Coworking.Api.CrossCutting.dll": {}
+        }
+      },
+      "Coworking.Api.Aplication/1.0.0": {
+        "dependencies": {
+          "Coworking.Api.Aplication.Contracts": "1.0.0",
+          "Coworking.Api.Business": "1.0.0",
+          "Coworking.Api.DataAccess": "1.0.0",
+          "Coworking.Api.DataAccess.Contracts": "1.0.0"
+        },
+        "runtime": {
+          "Coworking.Api.Aplication.dll": {}
+        }
+      },
+      "Coworking.Api.Aplication.Contracts/1.0.0": {
+        "dependencies": {
+          "Coworking.Api.Business": "1.0.0",
+          "Coworking.Api.DataAccess.Contracts": "1.0.0"
+        },
+        "runtime": {
+          "Coworking.Api.Aplication.Contracts.dll": {}
+        }
+      },
+      "Coworking.Api.Business/1.0.0": {
+        "runtime": {
+          "Coworking.Api.Business.dll": {}
+        }
+      },
+      "Coworking.Api.DataAccess/1.0.0": {
+        "dependencies": {
+          "Coworking.Api.Business": "1.0.0",
+          "Coworking.Api.DataAccess.Contracts": "1.0.0"
+        },
+        "runtime": {
+          "Coworking.Api.DataAccess.dll": {}
+        }
+      },
+      "Coworking.Api.DataAccess.Contracts/1.0.0": {
+        "runtime": {
+          "Coworking.Api.DataAccess.Contracts.dll": {}
+        }
+      },
+      "Microsoft.Extensions.DependencyInjection.Abstractions/2.2.0.0": {
+        "runtime": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18315"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Coworking.Api.CrossCutting/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Coworking.Api.Aplication/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Coworking.Api.Aplication.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Coworking.Api.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Coworking.Api.DataAccess/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Coworking.Api.DataAccess.Contracts/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Microsoft.Extensions.DependencyInjection.Abstractions/2.2.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
